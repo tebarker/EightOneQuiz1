@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import static com.sun.security.auth.module.Crypt.shifts;
+import static java.lang.StringUTF16.charAt;
+
 public class LoopFun
 {
 
@@ -53,10 +56,20 @@ public class LoopFun
        * @return the encrypted string by shifting each character by three character
        */
       public String encrypt(String word) {
-            String newStr = "";
-           newStr = newStr.charAt(newStr.length()+1) + newStr.substring(0, newStr.length() - 1);
+
+          char[] toEncrypt = word.toCharArray();
+          for (int i = 0; i < toEncrypt.length; i++) {
+              if (Character.isLetter(toEncrypt[i])) {
+                  toEncrypt[i] = (toEncrypt[i] + 3 - (int)'a') % 26 + (int)'a';
+              }
+          }
+         word = String.valueOf(toEncrypt);
+          return word;
+      }
 
 
-          return newStr;
+
+
+
       }
 }
