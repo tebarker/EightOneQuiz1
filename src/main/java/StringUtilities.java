@@ -26,12 +26,15 @@ public class StringUtilities {
      */
     public String reverse(String valueToBeReversed) {
 
+            return new StringBuilder(valueToBeReversed).reverse().toString();
 
-        StringBuilder reversedStr = new StringBuilder();
-        reversedStr.append(valueToBeReversed);
-        reversedStr.reverse();
+        //StringBuilder reversedStr = new StringBuilder();
+        //reversedStr.append(valueToBeReversed);
+        //reversedStr.reverse();
 
-        return reversedStr.toString();
+        //return reversedStr.toString();
+
+
     }
 
     /**
@@ -40,10 +43,11 @@ public class StringUtilities {
      */
     public Character getMiddleCharacter(String word) {
 
-        int strLength = word.length();
-        int middleChar = strLength / 2;
+        //int strLength = word.length();
+        //int middleChar = strLength / 2;
+        //return word.charAt(middleChar);
 
-        return word.charAt(middleChar);
+        return word.charAt(word.length()/2);
 
 
 

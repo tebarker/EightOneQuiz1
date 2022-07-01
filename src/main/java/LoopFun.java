@@ -1,27 +1,26 @@
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import static com.sun.security.auth.module.Crypt.shifts;
-import static java.lang.StringUTF16.charAt;
+public class LoopFun {
 
-public class LoopFun
-{
+    /**
+     * Given a number, return the factorial of that number.
+     * For example, given 5, the factorial is 5 x 4 x 3 x 2 x 1 which should return 120.
+     *
+     * @param number
+     * @return the factorial of the number
+     */
+    public Integer factorial(Integer number) {
 
-      /**
-       * Given a number, return the factorial of that number.
-       * For example, given 5, the factorial is 5 x 4 x 3 x 2 x 1 which should return 120.
-       * @param number
-       * @return the factorial of the number
-       */
-      public Integer factorial(Integer number){
+        int factorial = 1, i;
+        for (i = 2; i <= number; i++) {
+            factorial *= i;
 
-          int factorial = 1, i;
-          for (i = 2; i <= number; i++){
-              factorial *= i;
+        }
+        return factorial;
 
-           }
-           return factorial;
-      }
+
+}
 
       /**
        * Given a phrase, get the acronym of that phrase. Acronym is the combination of
@@ -56,20 +55,37 @@ public class LoopFun
        * @return the encrypted string by shifting each character by three character
        */
       public String encrypt(String word) {
+          String toEncrypt = "";
 
-          char[] toEncrypt = word.toCharArray();
-          for (int i = 0; i < toEncrypt.length; i++) {
-              if (Character.isLetter(toEncrypt[i])) {
-                  toEncrypt[i] = (toEncrypt[i] + 3 - (int)'a') % 26 + (int)'a';
+//          int numOfShifts = 3;
+//
+//          int length = word.length();
+//
+//          for(int i = 0; i <=length; i++) {
+//
+//              char c = (char) (word.charAt(i) + numOfShifts);
+//              if (c < 'z')
+//                  toEncrypt += (char) (word.charAt(i) - (26 - numOfShifts));
+//              else {
+//                  toEncrypt += (char) (word.charAt(i) + numOfShifts);
+//
+//                  return toEncrypt;
+          String alphabet = "abcdefghijklmnopqrstuvwxyz";
+          StringBuilder encWord = new StringBuilder();
+          for (int i = 0; i < word.length(); i++){
+              int idx = alphabet.indexOf(word.charAt(i));
+              idx += 3;
+              idx = idx % 26; //
+              encWord.append(alphabet.charAt(idx));
               }
+
+
+          return encWord.toString();
+
           }
-         word = String.valueOf(toEncrypt);
-          return word;
-      }
-
-
-
-
 
       }
-}
+
+
+
+
